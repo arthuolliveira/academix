@@ -122,4 +122,5 @@ HTML (formulário/link) → Controller → Repository → PostgreSQL
 
 ## Autores
 
-- Preencha com os nomes da equipe
+- Arthur Jesus de OLiveira
+- Gustavo Nascimento Porto
