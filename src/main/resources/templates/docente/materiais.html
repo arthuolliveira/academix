@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Publicar Materiais</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDocente('materiais')}"></div>
+
+    <main class="conteudo">
+        <h1>Publicar Materiais</h1>
+        <p class="subtitulo">Disponibilize arquivos para os alunos das suas turmas.</p>
+
+        <div class="cartao">
+            <h2>Novo material</h2>
+            <label for="turma">Turma</label>
+            <select id="turma"><option>Engenharia de Requisitos</option><option>Banco de Dados</option></select>
+            <label for="titulo">Título do material</label>
+            <input type="text" id="titulo">
+            <label for="arquivo">Arquivo</label>
+            <input type="file" id="arquivo"><br>
+            <button type="button" class="botao">Publicar material</button>
+        </div>
+
+        <div class="cartao">
+            <h2>Materiais publicados</h2>
+            <table>
+                <tr><th>Turma</th><th>Material</th><th>Data</th></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Slides - Elicitação de requisitos</td><td>09/03/2026</td></tr>
+                <tr><td>Banco de Dados</td><td>Roteiro de aula prática - SQL</td><td>12/03/2026</td></tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

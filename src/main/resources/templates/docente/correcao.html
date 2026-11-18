@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Correção de Trabalhos</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDocente('correcao')}"></div>
+
+    <main class="conteudo">
+        <h1>Correção e Feedback de Trabalhos</h1>
+        <p class="subtitulo">Avalie os trabalhos enviados e escreva um retorno para cada aluno.</p>
+
+        <div class="cartao">
+            <h2>Trabalhos recebidos</h2>
+            <table>
+                <tr><th>Aluno</th><th>Atividade</th><th>Enviado em</th><th>Situação</th></tr>
+                <tr><td>Diogo</td><td>Lista de stakeholders</td><td>09/11/2026</td><td class="situacao-alerta">Aguardando correção</td></tr>
+                <tr><td>Mailson</td><td>Lista de stakeholders</td><td>10/11/2026</td><td class="situacao-ok">Corrigido</td></tr>
+            </table>
+        </div>
+
+        <div class="cartao">
+            <h2>Corrigir: Diogo</h2>
+            <label for="nota">Nota</label>
+            <input type="number" id="nota" step="0.1" min="0" max="10">
+            <label for="feedback">Feedback para o aluno</label>
+            <textarea id="feedback"></textarea><br>
+            <button type="button" class="botao">Enviar feedback</button>
+        </div>
+    </main>
+</div>
+</body>
+</html>
