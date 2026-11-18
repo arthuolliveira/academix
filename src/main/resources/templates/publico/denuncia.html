@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Denúncia Anônima</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<header class="topo-publico">
+    <strong>Academix</strong>
+    <a th:href="@{/login}">Voltar ao login</a>
+</header>
+
+<main class="conteudo-publico">
+    <h1>Denúncia Anônima</h1>
+    <p class="subtitulo">Envie uma denúncia sem se identificar e acompanhe pelo número de protocolo.</p>
+
+    <div class="cartao">
+        <h2>Enviar denúncia</h2>
+        <label for="tipo">Tipo de ocorrência</label>
+        <select id="tipo">
+            <option>Assédio</option>
+            <option>Infraestrutura</option>
+            <option>Conduta docente</option>
+            <option>Outros</option>
+        </select>
+        <label for="descricao">Descreva o ocorrido</label>
+        <textarea id="descricao"></textarea><br>
+        <button type="button" class="botao">Enviar denúncia</button>
+        <p class="mensagem-sucesso">Denúncia registrada. Guarde seu protocolo: <strong>DEN-2026-0042</strong></p>
+    </div>
+
+    <div class="cartao">
+        <h2>Consultar andamento</h2>
+        <label for="protocolo">Número de protocolo</label>
+        <input type="text" id="protocolo" value="DEN-2026-0042">
+        <br><button type="button" class="botao">Consultar</button>
+        <p>Situação: <strong class="situacao-alerta">Em análise pela ouvidoria</strong></p>
+    </div>
+</main>
+</body>
+</html>

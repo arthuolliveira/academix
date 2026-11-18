@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Validação de Atestado</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<header class="topo-publico">
+    <strong>Academix</strong>
+    <a th:href="@{/login}">Voltar ao login</a>
+</header>
+
+<main class="conteudo-publico">
+    <h1>Validação Pública de Atestado</h1>
+    <p class="subtitulo">Informe o código impresso no atestado para confirmar se ele é autêntico.</p>
+   
+
+    <div class="cartao">
+        <label for="codigo">Código de validação</label>
+        <input type="text" id="codigo" value="ACX-2026-48F7-K29">
+        <br><button type="button" class="botao">Validar atestado</button>
+    </div>
+
+    <div class="cartao">
+        <h2>Resultado</h2>
+        <p class="mensagem-sucesso">Atestado válido.</p>
+        <table>
+            <tr><th>Aluno</th><td>Diogo</td></tr>
+            <tr><th>Curso</th><td>Sistemas de Informação</td></tr>
+            <tr><th>Semestre</th><td>2026.2</td></tr>
+            <tr><th>Emitido em</th><td>17/11/2026</td></tr>
+        </table>
+    </div>
+</main>
+</body>
+</html>

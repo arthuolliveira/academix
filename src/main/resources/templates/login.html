@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Login</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body class="pagina-login">
+
+<div class="caixa-login">
+    <h1>Academix</h1>
+    <p class="subtitulo">Sistema Acadêmico</p>
+
+    <!-- Só aparece se o Controller enviou "erro" para o Model -->
+    <div class="erro" th:if="${erro != null}" th:text="${erro}">Mensagem de erro</div>
+
+    <!-- method="post": os dados vão para @PostMapping("/login") do LoginController -->
+    <form th:action="@{/login}" method="post">
+        <label for="identificacao">Matrícula ou CPF</label>
+        <input type="text" id="identificacao" name="identificacao" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit" class="botao">Entrar</button>
+    </form>
+
+    <hr>
+    <a class="botao botao-secundario" th:href="@{/publico/atestado}">Validar atestado de matrícula</a>
+    <a class="botao botao-secundario" th:href="@{/publico/denuncia}">Denúncia anônima</a>
+
+</div>
+
+</body>
+</html>
