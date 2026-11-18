@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Fragmentos</title></head>
+<body>
+
+<!--
+  Este arquivo guarda os MENUS reutilizáveis. Cada página os inclui com:
+  <div th:replace="~{fragmentos :: menuDocente('notas')}"></div>
+  O parâmetro ("notas") diz qual link fica destacado como página atual.
+  Assim o menu é escrito uma única vez e fica igual em todas as telas.
+-->
+
+<!-- ============ MENU DO DISCENTE ============ -->
+<aside class="menu" th:fragment="menuDiscente(ativo)">
+    <div class="menu-topo">
+        <h2>Academix</h2>
+        <p th:text="${session.usuarioLogado.nome}">Nome</p>
+        <span class="etiqueta">Discente</span>
+    </div>
+    <nav>
+        <a th:href="@{/discente/painel}" th:classappend="${ativo == 'painel'} ? 'ativo'">Início</a>
+        <a th:href="@{/discente/boletim}" th:classappend="${ativo == 'boletim'} ? 'ativo'">Meu Boletim</a>
+        <a th:href="@{/discente/trabalhos}" th:classappend="${ativo == 'trabalhos'} ? 'ativo'">Entrega de Trabalhos</a>
+        <a th:href="@{/discente/materiais}" th:classappend="${ativo == 'materiais'} ? 'ativo'">Materiais de Aula</a>
+        <a th:href="@{/discente/atestado}" th:classappend="${ativo == 'atestado'} ? 'ativo'">Atestado de Matrícula</a>
+        <a th:href="@{/discente/grade}" th:classappend="${ativo == 'grade'} ? 'ativo'">Grade Horária</a>
+        <a th:href="@{/discente/historico}" th:classappend="${ativo == 'historico'} ? 'ativo'">Histórico Escolar</a>
+        <a th:href="@{/discente/denuncia}" th:classappend="${ativo == 'denuncia'} ? 'ativo'">Canal de Denúncias</a>
+    </nav>
+    <a class="sair" th:href="@{/logout}">Sair</a>
+</aside>
+
+<!-- ============ MENU DO DOCENTE ============ -->
+<aside class="menu" th:fragment="menuDocente(ativo)">
+    <div class="menu-topo">
+        <h2>Academix</h2>
+        <p th:text="${session.usuarioLogado.nome}">Nome</p>
+        <span class="etiqueta">Docente</span>
+    </div>
+    <nav>
+        <a th:href="@{/docente/painel}" th:classappend="${ativo == 'painel'} ? 'ativo'">Início</a>
+        <a th:href="@{/docente/frequencia}" th:classappend="${ativo == 'frequencia'} ? 'ativo'">Diário de Classe</a>
+        <a th:href="@{/docente/notas}" th:classappend="${ativo == 'notas'} ? 'ativo'">Lançar Notas</a>
+        <a th:href="@{/docente/materiais}" th:classappend="${ativo == 'materiais'} ? 'ativo'">Publicar Materiais</a>
+        <a th:href="@{/docente/correcao}" th:classappend="${ativo == 'correcao'} ? 'ativo'">Correção de Trabalhos</a>
+    </nav>
+    <a class="sair" th:href="@{/logout}">Sair</a>
+</aside>
+
+<!-- ============ MENU DO GESTOR ============ -->
+<aside class="menu" th:fragment="menuGestor(ativo)">
+    <div class="menu-topo">
+        <h2>Academix</h2>
+        <p th:text="${session.usuarioLogado.nome}">Nome</p>
+        <span class="etiqueta">Gestor</span>
+    </div>
+    <nav>
+        <a th:href="@{/gestor/painel}" th:classappend="${ativo == 'painel'} ? 'ativo'">Painel / Ocorrências</a>
+        <a th:href="@{/gestor/discentes}" th:classappend="${ativo == 'discentes'} ? 'ativo'">Gestão de Discentes</a>
+        <a th:href="@{/gestor/alocacao}" th:classappend="${ativo == 'alocacao'} ? 'ativo'">Alocação Docente</a>
+        <a th:href="@{/gestor/relatorios}" th:classappend="${ativo == 'relatorios'} ? 'ativo'">Relatórios</a>
+    </nav>
+    <a class="sair" th:href="@{/logout}">Sair</a>
+</aside>
+
+</body>
+</html>
