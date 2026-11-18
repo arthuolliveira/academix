@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Início</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral (vem do arquivo fragmentos.html) -->
+    <div th:replace="~{fragmentos :: menuDiscente('painel')}"></div>
+
+    <main class="conteudo">
+        <h1>Olá, <span th:text="${session.usuarioLogado.nome}">Aluno</span>!</h1>
+        <p class="subtitulo">Painel do Discente</p>
+
+        <div class="grade-cartoes">
+            <a class="cartao" th:href="@{/discente/boletim}"><strong>Meu Boletim</strong><span>Notas, médias e frequência</span></a>
+            <a class="cartao" th:href="@{/discente/trabalhos}"><strong>Entrega de Trabalhos</strong><span>Envie suas atividades</span></a>
+            <a class="cartao" th:href="@{/discente/materiais}"><strong>Materiais de Aula</strong><span>Arquivos publicados pelos professores</span></a>
+            <a class="cartao" th:href="@{/discente/atestado}"><strong>Atestado de Matrícula</strong><span>Emita seu comprovante</span></a>
+            <a class="cartao" th:href="@{/discente/grade}"><strong>Grade Horária</strong><span>Seus horários da semana</span></a>
+            <a class="cartao" th:href="@{/discente/historico}"><strong>Histórico Escolar</strong><span>Disciplinas já cursadas</span></a>
+            <a class="cartao" th:href="@{/discente/denuncia}"><strong>Canal de Denúncias</strong><span>Registre uma ocorrência</span></a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

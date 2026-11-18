@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Boletim</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDiscente('boletim')}"></div>
+
+    <main class="conteudo">
+        <h1>Meu Boletim </h1>
+        <p class="subtitulo">Notas lançadas pelos professores e sua frequência em cada disciplina.</p>
+
+        <div class="cartao tabela-rolagem">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th class="centro">Nota 1</th>
+                        <th class="centro">Nota 2</th>
+                        <th class="centro">Média</th>
+                        <th class="centro">Total de aulas</th>
+                        <th class="centro">Faltas</th>
+                        <th class="centro">% de faltas</th>
+                        <th class="centro">% de presença</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="l : ${linhas}">
+                        <td th:text="${l.disciplina}">Disciplina</td>
+
+                        <td class="centro" th:text="${l.nota1 != null} ? ${#numbers.formatDecimal(l.nota1, 1, 1)} : '-'">-</td>
+                        <td class="centro" th:text="${l.nota2 != null} ? ${#numbers.formatDecimal(l.nota2, 1, 1)} : '-'">-</td>
+                        <td class="centro"><strong th:text="${l.media != null} ? ${#numbers.formatDecimal(l.media, 1, 1)} : '-'">-</strong></td>
+
+                        <td class="centro" th:text="${l.totalAulas}">0</td>
+                        <td class="centro" th:text="${l.faltas}">0</td>
+
+                        <td class="centro aviso-texto" colspan="2" th:if="${l.totalAulas == 0}">Sem base de cálculo</td>
+
+                        <td class="centro" th:unless="${l.totalAulas == 0}" th:text="${#numbers.formatDecimal(l.percentualFaltas, 1, 1)} + '%'">0%</td>
+                        <td class="centro" th:unless="${l.totalAulas == 0}" th:text="${#numbers.formatDecimal(l.percentualPresenca, 1, 1)} + '%'">100%</td>
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(linhas)}">
+                        <td colspan="8" class="aviso-texto">Você ainda não está matriculado em nenhuma disciplina.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="aviso-texto">Média = (Nota 1 + Nota 2) / 2, calculada quando as duas notas estão lançadas.
+           % de faltas = 100 × faltas ÷ total de aulas.</p>
+    </main>
+</div>
+</body>
+</html>
