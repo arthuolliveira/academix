@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Histórico Escolar</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral (vem do arquivo fragmentos.html) -->
+    <div th:replace="~{fragmentos :: menuDiscente('historico')}"></div>
+
+    <main class="conteudo">
+        <h1>Histórico Escolar</h1>
+        <p class="subtitulo">Disciplinas já cursadas, com média final e situação.</p>
+
+        <div class="cartao">
+            <table>
+                <tr><th>Semestre</th><th>Disciplina</th><th class="centro">Média final</th><th>Situação</th></tr>
+                <tr><td>2025.1</td><td>Lógica de Programação</td><td class="centro">8,5</td><td class="situacao-ok">Aprovado</td></tr>
+                <tr><td>2025.1</td><td>Matemática Discreta</td><td class="centro">6,0</td><td class="situacao-ok">Aprovado</td></tr>
+                <tr><td>2025.2</td><td>Estrutura de Dados</td><td class="centro">7,5</td><td class="situacao-ok">Aprovado</td></tr>
+                <tr><td>2025.2</td><td>Cálculo I</td><td class="centro">4,5</td><td class="situacao-ruim">Reprovado</td></tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

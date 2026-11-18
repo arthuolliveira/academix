@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Atestado de Matrícula</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDiscente('atestado')}"></div>
+
+    <main class="conteudo">
+        <h1>Atestado de Matrícula</h1>
+        <p class="subtitulo">Emita um comprovante de que você está regularmente matriculado.</p>
+
+        <div class="cartao">
+            <h2>Pré-visualização do atestado</h2>
+            <p>Atestamos que <strong>Diogo</strong>, matrícula <strong>2026003</strong>,
+               está regularmente matriculado(a) no semestre letivo 2026.2.</p>
+            <p>Código de validação: <strong>ACX-2026-48F7-K29</strong></p>
+            <p class="aviso-texto">Qualquer pessoa pode conferir este código na página pública de validação.</p>
+            <button type="button" class="botao">Gerar atestado em PDF</button>
+            <a class="botao botao-secundario" th:href="@{/publico/atestado}">Abrir validação pública</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

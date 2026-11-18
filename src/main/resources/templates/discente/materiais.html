@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Materiais de Aula</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDiscente('materiais')}"></div>
+
+    <main class="conteudo">
+        <h1>Materiais de Aula</h1>
+        <p class="subtitulo">Arquivos publicados pelos professores das suas disciplinas.</p>
+
+        <div class="cartao">
+            <table>
+                <tr><th>Disciplina</th><th>Material</th><th>Publicado em</th><th></th></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Slides - Elicitação de requisitos (PDF)</td><td>09/03/2026</td><td><button type="button" class="botao botao-pequeno">Baixar</button></td></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Modelo de documento de requisitos (DOCX)</td><td>16/03/2026</td><td><button type="button" class="botao botao-pequeno">Baixar</button></td></tr>
+                <tr><td>Banco de Dados</td><td>Roteiro de aula prática - SQL (PDF)</td><td>12/03/2026</td><td><button type="button" class="botao botao-pequeno">Baixar</button></td></tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

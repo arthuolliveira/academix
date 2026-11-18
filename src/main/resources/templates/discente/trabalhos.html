@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Entrega de Trabalhos</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDiscente('trabalhos')}"></div>
+
+    <main class="conteudo">
+        <h1>Entrega de Trabalhos </h1>
+        <p class="subtitulo">Envie os arquivos das atividades pedidas pelos professores.</p>
+
+        <div class="cartao">
+            <h2>Atividades</h2>
+            <table>
+                <tr><th>Disciplina</th><th>Atividade</th><th>Prazo</th><th>Situação</th></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Documento de requisitos do Academix</td><td>30/11/2026</td><td class="situacao-alerta">Pendente</td></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Lista de stakeholders</td><td>10/11/2026</td><td class="situacao-ok">Enviado</td></tr>
+                <tr><td>Banco de Dados</td><td>Modelo entidade-relacionamento</td><td>05/12/2026</td><td class="situacao-alerta">Pendente</td></tr>
+            </table>
+        </div>
+
+        <div class="cartao">
+            <h2>Enviar trabalho</h2>
+            <label for="atividade">Atividade</label>
+            <select id="atividade">
+                <option>Documento de requisitos do Academix</option>
+                <option>Modelo entidade-relacionamento</option>
+            </select>
+            <label for="arquivo">Arquivo</label>
+            <input type="file" id="arquivo">
+            <label for="comentario">Comentário (opcional)</label>
+            <textarea id="comentario"></textarea><br>
+            <button type="button" class="botao">Enviar trabalho</button>
+        </div>
+    </main>
+</div>
+</body>
+</html>
