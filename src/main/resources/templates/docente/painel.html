@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Início</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDocente('painel')}"></div>
+
+    <main class="conteudo">
+        <h1>Olá, <span th:text="${session.usuarioLogado.nome}">Professor</span>!</h1>
+        <p class="subtitulo">Painel do Docente</p>
+
+        <div class="grade-cartoes">
+            <a class="cartao" th:href="@{/docente/frequencia}"><strong>Diário de Classe</strong><span>Registrar aula e frequência</span></a>
+            <a class="cartao" th:href="@{/docente/notas}"><strong>Lançar Notas</strong><span>Notas e médias dos alunos</span></a>
+            <a class="cartao" th:href="@{/docente/materiais}"><strong>Publicar Materiais</strong><span>Envie arquivos às turmas</span></a>
+            <a class="cartao" th:href="@{/docente/correcao}"><strong>Correção de Trabalhos</strong><span>Feedback aos alunos</span></a>
+        </div>
+
+        <div class="cartao">
+            <h2>Minhas turmas</h2>
+            <table>
+                <tr><th>Disciplina</th><th></th></tr>
+                <tr th:each="d : ${disciplinas}">
+                    <td th:text="${d.nome}">Disciplina</td>
+                    <td>
+                        <a class="botao botao-pequeno" th:href="@{/docente/frequencia(disciplinaId=${d.id})}">Diário</a>
+                        <a class="botao botao-pequeno botao-secundario" th:href="@{/docente/notas(disciplinaId=${d.id})}">Notas</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Diário de Classe</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDocente('frequencia')}"></div>
+
+    <main class="conteudo">
+        <h1>Diário de Classe</h1>
+        <p class="subtitulo">Escolha a turma, informe a data e o conteúdo da aula e marque a presença dos alunos.</p>
+
+        <div class="mensagem-sucesso" th:if="${mensagem != null}" th:text="${mensagem}">Sucesso</div>
+        <div class="erro" th:if="${erro != null}" th:text="${erro}">Erro</div>
+
+        <div class="cartao">
+            <h2>1. Turma</h2>
+            <form th:action="@{/docente/frequencia}" method="get">
+                <label for="disciplinaId">Disciplina</label>
+                <select id="disciplinaId" name="disciplinaId">
+                    <option th:each="d : ${disciplinas}"
+                            th:value="${d.id}"
+                            th:text="${d.nome}"
+                            th:selected="${disciplina != null and disciplina.id == d.id}">Disciplina</option>
+                </select><br>
+                <button type="submit" class="botao">Selecionar turma</button>
+            </form>
+        </div>
+
+        <div class="cartao" th:if="${disciplina != null}">
+            <h2>2. Aula de <span th:text="${disciplina.nome}">Disciplina</span></h2>
+
+            <form th:action="@{/docente/frequencia}" method="post">
+                <input type="hidden" name="disciplinaId" th:value="${disciplina.id}">
+
+                <label for="data">Data da aula</label>
+                <input type="date" id="data" name="data" th:value="${hoje}" required>
+
+                <label for="conteudo">Conteúdo ministrado</label>
+                <textarea id="conteudo" name="conteudo" required></textarea>
+
+                <label>Frequência dos alunos</label>
+                <table>
+                    <tr><th>Aluno</th><th>Matrícula</th><th>Situação</th></tr>
+                    <tr th:each="i : ${inscricoes}">
+                        <td th:text="${i.aluno.nome}">Aluno</td>
+                        <td th:text="${i.aluno.matricula}">0000000</td>
+                        <td>
+                            <label class="opcao-radio"><input type="radio" th:name="${'presenca_' + i.aluno.id}" value="P" checked> Presente</label>
+                            <label class="opcao-radio"><input type="radio" th:name="${'presenca_' + i.aluno.id}" value="F"> Falta</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <button type="submit" class="botao">Salvar aula e frequência</button>
+            </form>
+        </div>
+
+        <div class="cartao" th:if="${disciplina != null}">
+            <h2>Aulas registradas</h2>
+            <table>
+                <tr><th>Data</th><th>Conteúdo</th></tr>
+                <tr th:each="a : ${aulas}">
+                    <td th:text="${a.data}">2026-01-01</td>
+                    <td th:text="${a.conteudo}">Conteúdo</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(aulas)}">
+                    <td colspan="2" class="aviso-texto">Nenhuma aula registrada ainda.</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

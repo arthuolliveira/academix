@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Lançar Notas</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuDocente('notas')}"></div>
+
+    <main class="conteudo">
+        <h1>Lançamento de Notas</h1>
+        <p class="subtitulo">Escolha a turma e informe as notas (de 0,0 a 10,0). A média é calculada automaticamente.</p>
+
+        <div class="mensagem-sucesso" th:if="${mensagem != null}" th:text="${mensagem}">Sucesso</div>
+        <div class="erro" th:if="${erro != null}" th:text="${erro}">Erro</div>
+
+        <div class="cartao">
+            <h2>1. Turma</h2>
+            <form th:action="@{/docente/notas}" method="get">
+                <label for="disciplinaId">Disciplina</label>
+                <select id="disciplinaId" name="disciplinaId">
+                    <option th:each="d : ${disciplinas}"
+                            th:value="${d.id}"
+                            th:text="${d.nome}"
+                            th:selected="${disciplina != null and disciplina.id == d.id}">Disciplina</option>
+                </select><br>
+                <button type="submit" class="botao">Selecionar turma</button>
+            </form>
+        </div>
+
+        <div class="cartao" th:if="${disciplina != null}">
+            <h2>2. Notas de <span th:text="${disciplina.nome}">Disciplina</span></h2>
+
+            <form th:action="@{/docente/notas}" method="post" novalidate>
+                <input type="hidden" name="disciplinaId" th:value="${disciplina.id}">
+
+                <table>
+                    <tr><th>Aluno</th><th>Nota 1</th><th>Nota 2</th><th class="centro">Média atual</th></tr>
+                    <tr th:each="i : ${inscricoes}">
+                        <td th:text="${i.aluno.nome}">Aluno</td>
+                        <td><input type="number" step="0.1" th:name="${'nota1_' + i.id}" th:value="${i.nota1}"></td>
+                        <td><input type="number" step="0.1" th:name="${'nota2_' + i.id}" th:value="${i.nota2}"></td>
+                        <td class="centro"><strong th:text="${i.media != null} ? ${#numbers.formatDecimal(i.media, 1, 2)} : '-'">-</strong></td>
+                    </tr>
+                </table>
+
+                <button type="submit" class="botao">Salvar notas</button>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>
