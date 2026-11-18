@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Relatórios</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuGestor('relatorios')}"></div>
+
+    <main class="conteudo">
+        <h1>Relatórios Institucionais</h1>
+        <p class="subtitulo">Indicadores gerais da instituição.</p>
+
+        <div class="grade-cartoes">
+            <div class="cartao"><span class="numero-grande">248</span>Alunos ativos</div>
+            <div class="cartao"><span class="numero-grande">86%</span>Frequência média</div>
+            <div class="cartao"><span class="numero-grande">7,2</span>Média geral das notas</div>
+        </div>
+
+        <div class="cartao">
+            <h2>Desempenho por disciplina</h2>
+            <table>
+                <tr><th>Disciplina</th><th class="centro">Alunos</th><th class="centro">Média</th><th class="centro">Frequência</th><th class="centro">Aprovação</th></tr>
+                <tr><td>Engenharia de Requisitos</td><td class="centro">42</td><td class="centro">7,4</td><td class="centro">88%</td><td class="centro">90%</td></tr>
+                <tr><td>Banco de Dados</td><td class="centro">38</td><td class="centro">6,9</td><td class="centro">84%</td><td class="centro">81%</td></tr>
+            </table>
+            <button type="button" class="botao">Exportar relatório</button>
+        </div>
+    </main>
+</div>
+</body>
+</html>

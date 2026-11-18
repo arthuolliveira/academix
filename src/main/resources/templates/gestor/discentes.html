@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Gestão de Discentes</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuGestor('discentes')}"></div>
+
+    <main class="conteudo">
+        <h1>Gestão de Discentes</h1>
+        <p class="subtitulo">Consulte e atualize o cadastro dos alunos.</p>
+
+        <div class="cartao">
+            <label for="busca">Buscar por nome, matrícula ou CPF</label>
+            <input type="text" id="busca">
+            <button type="button" class="botao">Buscar</button>
+        </div>
+
+        <div class="cartao">
+            <table>
+                <tr><th>Nome</th><th>Matrícula</th><th>Curso</th><th>Situação</th><th></th></tr>
+                <tr><td>Diogo</td><td>2026003</td><td>Sistemas de Informação</td><td class="situacao-ok">Ativo</td><td><button type="button" class="botao botao-pequeno">Editar</button></td></tr>
+                <tr><td>Mailson</td><td>2026004</td><td>Sistemas de Informação</td><td class="situacao-ok">Ativo</td><td><button type="button" class="botao botao-pequeno">Editar</button></td></tr>
+                <tr><td>Ana Souza</td><td>2025101</td><td>Sistemas de Informação</td><td class="situacao-alerta">Trancado</td><td><button type="button" class="botao botao-pequeno">Editar</button></td></tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

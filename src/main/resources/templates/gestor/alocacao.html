@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Alocação Docente</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuGestor('alocacao')}"></div>
+
+    <main class="conteudo">
+        <h1>Alocação Docente </h1>
+        <p class="subtitulo">Defina qual professor ministra cada disciplina.</p>
+
+        <div class="cartao">
+            <h2>Alocação atual</h2>
+            <table>
+                <tr><th>Disciplina</th><th>Professor</th><th>Carga horária</th><th></th></tr>
+                <tr><td>Engenharia de Requisitos</td><td>Prof. Elton</td><td>60h</td><td><button type="button" class="botao botao-pequeno">Alterar</button></td></tr>
+                <tr><td>Banco de Dados</td><td>Prof. Elton</td><td>60h</td><td><button type="button" class="botao botao-pequeno">Alterar</button></td></tr>
+                <tr><td>Redes de Computadores</td><td class="aviso-texto">Sem professor</td><td>60h</td><td><button type="button" class="botao botao-pequeno">Alocar</button></td></tr>
+            </table>
+        </div>
+
+        <div class="cartao">
+            <h2>Nova alocação</h2>
+            <label for="disc">Disciplina</label>
+            <select id="disc"><option>Redes de Computadores</option></select>
+            <label for="prof">Professor</label>
+            <select id="prof"><option>Prof. Elton</option></select><br>
+            <button type="button" class="botao">Confirmar alocação</button>
+        </div>
+    </main>
+</div>
+</body>
+</html>

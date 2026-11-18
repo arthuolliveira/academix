@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Academix - Painel do Gestor</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<div class="layout">
+
+    <!-- Menu lateral -->
+    <div th:replace="~{fragmentos :: menuGestor('painel')}"></div>
+
+    <main class="conteudo">
+        <h1>Painel do Gestor</h1>
+        <p class="subtitulo">Gestão de ocorrências e ouvidoria.</p>
+
+        <div class="grade-cartoes">
+            <div class="cartao"><span class="numero-grande">7</span>Ocorrências abertas</div>
+            <div class="cartao"><span class="numero-grande">3</span>Em análise</div>
+            <div class="cartao"><span class="numero-grande">12</span>Resolvidas no semestre</div>
+        </div>
+
+        <div class="cartao">
+            <h2>Ocorrências recentes</h2>
+            <table>
+                <tr><th>Protocolo</th><th>Tipo</th><th>Origem</th><th>Data</th><th>Situação</th><th></th></tr>
+                <tr><td>DEN-2026-0012</td><td>Infraestrutura</td><td>Identificada</td><td>14/10/2026</td><td class="situacao-alerta">Em análise</td><td><button type="button" class="botao botao-pequeno">Abrir</button></td></tr>
+                <tr><td>DEN-2026-0013</td><td>Conduta docente</td><td>Anônima</td><td>20/10/2026</td><td class="situacao-ruim">Aberta</td><td><button type="button" class="botao botao-pequeno">Abrir</button></td></tr>
+                <tr><td>DEN-2026-0009</td><td>Assédio</td><td>Anônima</td><td>02/10/2026</td><td class="situacao-ok">Resolvida</td><td><button type="button" class="botao botao-pequeno">Abrir</button></td></tr>
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>
